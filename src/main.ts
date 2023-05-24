@@ -1,12 +1,14 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import App from './App.vue';
+import Layout from './layout/index.vue';
 import router from './router';
 import './style/minireset.css';
 import './style/theme.scss';
 import './style/global.scss';
+import 'remixicon/fonts/remixicon.css';
+import 'virtual:uno.css';
 
-const app = createApp(App);
+const app = createApp(Layout);
 
 app.use(createPinia());
 app.use(router);

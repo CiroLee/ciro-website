@@ -16,7 +16,7 @@ npm run build
 
 ## stacks
 
-| 名称       | 描述                | 链接                            |
+| name       | description         | link                            |
 | ---------- | ------------------- | ------------------------------- |
 | Vue3       | javascript 框架     | https://v3.cn.vuejs.org/        |
 | Vue-router | vue 路由管理        | https://router.vuejs.org/zh/    |

@@ -8,5 +8,7 @@
   "editor.formatOnSave": true,
   // sytlelint 14 要加这一行
   "stylelint.validate": ["css", "scss", "vue"],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "css.validate": false,
+  "scss.validate": false
 }

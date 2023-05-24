@@ -13,5 +13,11 @@ module.exports = {
         except: ['inside-block'],
       },
     ],
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['apply'],
+      },
+    ],
   },
 };
