@@ -1,6 +1,6 @@
 <script lang="ts" setup></script>
 <template>
   <div class="home">
-    <h1>home</h1>
+    <h1>home page</h1>
   </div>
 </template>
