@@ -13,10 +13,11 @@ module.exports = {
         except: ['inside-block'],
       },
     ],
-    'at-rule-no-unknown': [
+    'at-rule-no-unknown': null,
+    'scss/at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['apply'],
+        ignoreAtRules: ['apply', 'screen'],
       },
     ],
   },

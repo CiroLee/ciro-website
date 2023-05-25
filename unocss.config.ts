@@ -9,6 +9,7 @@ export default defineConfig({
       mobile: '480px',
     },
   },
+  rules: [['p-bento', { padding: '10px' }]],
   shortcuts: {
     'flex-center': 'justify-center items-center',
   },
