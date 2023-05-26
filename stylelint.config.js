@@ -13,6 +13,12 @@ module.exports = {
         except: ['inside-block'],
       },
     ],
+    'at-rule-empty-line-before': [
+      'always',
+      {
+        except: ['inside-block'],
+      },
+    ],
     'at-rule-no-unknown': null,
     'scss/at-rule-no-unknown': [
       true,

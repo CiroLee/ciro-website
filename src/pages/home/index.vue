@@ -10,7 +10,7 @@ import BentoSponsor from './components/BentoSponsor.vue';
       <div flex-1 class="bento-grid">
         <bento-about-me row-span-2 />
         <bento-app h-80px row-span-1 />
-        <bento-sponsor row-span-2 h-200px />
+        <bento-sponsor row-span-2 />
         <bento-stacks row-span-1 />
       </div>
       <div ml-10px class="w-28%">placeholder</div>

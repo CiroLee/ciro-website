@@ -31,7 +31,6 @@ import { navigationConfig } from '@/config';
   &:not(.theme):hover {
     background-color: var(--light-active-bg);
   }
-
   @apply flex-center;
   & .cw-icon {
     margin-right: 2px;

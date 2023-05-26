@@ -30,6 +30,9 @@ devDependencies:
   '@unocss/transformer-directives':
     specifier: ^0.52.3
     version: 0.52.3
+  '@unocss/transformer-variant-group':
+    specifier: ^0.52.3
+    version: 0.52.3
   '@vitejs/plugin-vue':
     specifier: ^4.2.3
     version: 4.2.3(vite@4.3.8)(vue@3.3.4)

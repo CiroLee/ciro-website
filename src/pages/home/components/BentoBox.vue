@@ -2,7 +2,7 @@
 <template>
   <div class="bento-box"><slot /></div>
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
 .bento-box {
   padding: 0;
   border-radius: 8px;
