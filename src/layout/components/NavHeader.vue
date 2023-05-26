@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Icon from '@/components/icon/index.vue';
+import Icon from '@/components/Icon/index.vue';
 import { navigationConfig } from '@/config';
 </script>
 <template>

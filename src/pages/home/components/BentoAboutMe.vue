@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import BentoBox from './BentoBox.vue';
-import Icon from '@/components/icon/index.vue';
+import Icon from '@/components/Icon/index.vue';
+import message from '@/components/Message';
+import { copyToClipboard } from '@/utils/utils';
+
+const handleCopy = (text: string) => {
+  copyToClipboard(text).then(() => {
+    message.success('Copied');
+  });
+};
 </script>
 <template>
   <bento-box>
@@ -18,10 +26,10 @@ import Icon from '@/components/icon/index.vue';
         <a href="https://space.bilibili.com/470243907" target="_blank" class="icon-box">
           <icon name="bilibili-line" size="22px" />
         </a>
-        <div class="icon-box">
+        <div class="icon-box" @click="handleCopy('rain_rainbowAce')">
           <icon name="wechat-2-line" size="22px" />
         </div>
-        <div class="icon-box">
+        <div class="icon-box" @click="handleCopy('ciromail@126.com')">
           <icon name="mail-line" size="22px" />
         </div>
       </div>
