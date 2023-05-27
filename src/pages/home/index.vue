@@ -3,33 +3,45 @@ import BentoAboutMe from './components/BentoAboutMe.vue';
 import BentoStacks from './components/BentoStacks.vue';
 import BentoApp from './components/BentoApp.vue';
 import BentoSponsor from './components/BentoSponsor.vue';
+import MyProjects from './components/MyProjects.vue';
+import CodeTyping from './components/CodeTyping.vue';
 </script>
 <template>
-  <div>
-    <div class="top" md:flex px-16px>
+  <div class="home" mt-32px>
+    <div class="bento-wrapper">
       <div flex-1 class="bento-grid">
         <bento-about-me row-span-2 />
-        <bento-app h-80px row-span-1 />
+        <bento-app row-span-1 />
         <bento-sponsor row-span-2 />
-        <bento-stacks row-span-1 />
+        <bento-stacks h-200px row-span-1 />
       </div>
-      <div ml-10px class="w-28%">placeholder</div>
+      <code-typing ml-10px class="w-30%" />
     </div>
+    <my-projects mt-10px />
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
+.bento-wrapper {
+  display: flex;
+}
+
 .bento-grid {
   display: grid;
-  grid-template-rows: repeat(auto-fill, 1fr);
-  grid-template-columns: 2fr 1.55fr;
+  grid-template-columns: 2fr 1.8fr;
   grid-gap: 10px;
 }
 
 @screen lt-md {
+  .home {
+    padding: 0 16px;
+  }
+  .bento-wrapper {
+    display: block;
+  }
   .bento-grid {
     display: block;
     & > div:not(:first-child) {
-      margin-top: 16px;
+      margin-top: 12px;
     }
   }
 }

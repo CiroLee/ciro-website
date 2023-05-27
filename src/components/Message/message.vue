@@ -33,7 +33,7 @@ onMounted(() => {
   align-items: center;
   padding: 0 20px;
   position: fixed;
-  top: 8%;
+  top: 24px;
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--message-bg);
