@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   color: var(--color);
@@ -7,6 +11,26 @@ body {
   font-size: 16px;
 }
 
-* {
-  box-sizing: border-box;
+.tool-tip {
+  &__item {
+    font-size: 12px;
+    height: 24px;
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--tooltip-bg);
+    border-radius: 4px;
+    border: 1px solid var(--tooltip-border-color);
+    padding: 0 8px;
+    display: none;
+    z-index: $tool-tip-z-index;
+  }
+  &:hover {
+    .tool-tip__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }

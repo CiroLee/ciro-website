@@ -12,8 +12,8 @@ import CodeTyping from './components/CodeTyping.vue';
       <div flex-1 class="bento-grid">
         <bento-about-me row-span-2 />
         <bento-app row-span-1 />
-        <bento-sponsor row-span-2 />
-        <bento-stacks h-200px row-span-1 />
+        <bento-stacks row-span-2 />
+        <bento-sponsor h-200px row-span-1 />
       </div>
       <code-typing ml-10px class="w-30%" />
     </div>

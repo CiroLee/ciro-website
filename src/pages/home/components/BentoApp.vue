@@ -5,7 +5,7 @@ import { myApps } from '@/config';
 <template>
   <bento-box>
     <div p-bento relative>
-      <p>我在使用的app</p>
+      <p>Apps in use</p>
       <ul
         h-44px
         mt-42px
@@ -17,8 +17,8 @@ import { myApps } from '@/config';
         px-2px
         class="bg-black/8 ml-50% translate-x--50% backdrop-blur border-[var(--dock-border-color)]"
       >
-        <a v-for="app in myApps" :key="app.key" :href="app.url" target="_blank" class="ul-item">
-          <div class="ul-item__tip">{{ app.name }}</div>
+        <a v-for="app in myApps" :key="app.key" :href="app.url" target="_blank" class="ul-item tool-tip">
+          <div class="tool-tip__item">{{ app.name }}</div>
           <img :src="app.icon" alt="" />
         </a>
       </ul>
