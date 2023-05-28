@@ -1,5 +1,17 @@
 * {
+  transition: color, background-color 0.2s linear;
   box-sizing: border-box;
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: var(--scrollbar-thumb);
+    &:hover {
+      background-color: var(--scrollbar-thumb-hover);
+    }
+  }
 }
 
 body {

@@ -11,6 +11,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'navigation',
     component: () => import('@/pages/navigation/index.vue'),
   },
+  {
+    path: '/sponsor',
+    name: 'sponsor',
+    component: () => import('@/pages/sponsor/index.vue'),
+  },
 ];
 
 export default createRouter({

@@ -115,15 +115,15 @@ export const stacks: StacksConfig[] = [
     key: 'linux',
     name: 'linux',
     url: 'https://ciro.club/statics/images/icons/1669479147_tjeemo5hvqOMYnY1ZhyWd.svg',
-    size: 56,
-    style: { bottom: '12px', right: '56px' },
+    size: 50,
+    style: { top: '96px', right: '56px' },
   },
   {
     key: 'node',
     name: 'node',
     url: 'https://ciro.club/statics/images/icons/1671039748_fN7T08vCDhC9SODIsCXcz.svg',
     size: 36,
-    style: { top: '68px', left: '130px' },
+    style: { top: '58px', right: '162px' },
   },
   {
     key: 'go',
@@ -137,7 +137,7 @@ export const stacks: StacksConfig[] = [
     name: 'zustand',
     url: 'https://ciro.club/statics/images/icons/1669655069_WlBA0yAySfM3sIDYBwTgy.svg',
     size: 48,
-    style: { top: '130px', left: '120px' },
+    style: { top: '110px', left: '160px' },
   },
   {
     key: 'unocss',
@@ -152,5 +152,12 @@ export const stacks: StacksConfig[] = [
     url: 'https://ciro.club/statics/images/icons/1670514397_sRxsmsfZ_ag3j7bn9QBbw.svg',
     size: 34,
     style: { top: '20px', left: '120px' },
+  },
+  {
+    key: 'vite',
+    name: 'vite',
+    url: 'https://ciro.club/statics/images/icons/1671037687_Gbt6gyAnONMkLA63Jm_43.svg',
+    size: 44,
+    style: { top: '100px', left: '10px' },
   },
 ];

@@ -35,6 +35,9 @@ const handleCopy = (text: string) => {
         <div class="icon-box" @click="handleCopy('ciromail@126.com')">
           <icon name="mail-line" size="22px" />
         </div>
+        <router-link to="/sponsor" class="icon-box">
+          <icon name="heart-3-line" size="22px" />
+        </router-link>
       </div>
     </div>
   </bento-box>

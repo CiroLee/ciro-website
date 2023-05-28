@@ -3,7 +3,7 @@ import Icon from '@/components/Icon/index.vue';
 import { navigationConfig } from '@/config';
 </script>
 <template>
-  <nav mt-14px>
+  <nav mt-16px flex>
     <router-link v-for="nav in navigationConfig.inner" :key="nav.key" class="nav__item" :to="nav.path">
       <icon v-if="nav.icon" :name="nav.icon" />
       <span>{{ nav.name }}</span>
