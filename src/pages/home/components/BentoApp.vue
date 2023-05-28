@@ -5,7 +5,7 @@ import { myApps } from '@/config';
 <template>
   <bento-box>
     <div p-bento relative>
-      <p>Apps in use</p>
+      <p>在使用的应用</p>
       <ul
         h-44px
         mt-42px

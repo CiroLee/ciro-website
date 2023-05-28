@@ -1,6 +1,8 @@
 * {
   transition: color, background-color 0.2s linear;
   box-sizing: border-box;
+
+  --webkit-tap-highlight-color: transparent;
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;

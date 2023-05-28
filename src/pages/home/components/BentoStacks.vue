@@ -5,7 +5,7 @@ import { stacks } from '@/config';
 <template>
   <bento-box class="bento-stacks">
     <div p-bento h-full flex flex-col>
-      <p>Stacks</p>
+      <p>技术栈</p>
       <div class="stacks-content">
         <div
           v-for="img in stacks"

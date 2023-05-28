@@ -4,7 +4,13 @@ import { navigationConfig } from '@/config';
 </script>
 <template>
   <nav mt-16px flex>
-    <router-link v-for="nav in navigationConfig.inner" :key="nav.key" class="nav__item" :to="nav.path">
+    <router-link
+      v-for="nav in navigationConfig.inner"
+      :key="nav.key"
+      active-class="nav__item--active"
+      class="nav__item"
+      :to="nav.path"
+    >
       <icon v-if="nav.icon" :name="nav.icon" />
       <span>{{ nav.name }}</span>
     </router-link>
@@ -25,8 +31,10 @@ import { navigationConfig } from '@/config';
   border-radius: 2px;
   transition: color, background-color $animate-duration ease;
   color: var(--sub-color);
+  &--active,
   &:hover {
     color: var(--color);
+    font-size: 800;
   }
   &:not(.theme):hover {
     background-color: var(--light-active-bg);
@@ -34,6 +42,12 @@ import { navigationConfig } from '@/config';
   @apply flex-center;
   & .cw-icon {
     margin-right: 2px;
+  }
+}
+
+@screen lt-md {
+  nav {
+    padding: 0 16px;
   }
 }
 </style>
