@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { CSSProperties, defineComponent } from 'vue';
 export default defineComponent({
   name: 'Icon',
 });
@@ -9,7 +9,7 @@ interface IconProps {
   name: string;
   color?: string;
   size?: string;
-  style?: string;
+  style?: string | CSSProperties;
 }
 const props = withDefaults(defineProps<IconProps>(), {
   name: '',

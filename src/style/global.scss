@@ -4,10 +4,11 @@
 
   --webkit-tap-highlight-color: transparent;
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
     height: 6px;
   }
   &::-webkit-scrollbar-thumb {
+    width: 12px;
     border-radius: 6px;
     background-color: var(--scrollbar-thumb);
     &:hover {

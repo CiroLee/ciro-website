@@ -23,19 +23,19 @@ const handleCopy = (text: string) => {
         <a href="https://github.com/CiroLee" target="_blank" class="icon-box">
           <icon name="github-fill" size="22px" />
         </a>
-        <a href="https://space.bilibili.com/470243907" target="_blank" class="icon-box">
+        <a href="https://space.bilibili.com/470243907" target="_blank" class="icon-box hover:text-#3987ed">
           <icon name="bilibili-line" size="22px" />
         </a>
-        <a href="https://twitter.com/duduclouds" target="_blank" class="icon-box">
+        <a href="https://twitter.com/duduclouds" target="_blank" class="icon-box hover:text-blue">
           <icon name="twitter-line" size="22px" />
         </a>
-        <div class="icon-box" @click="handleCopy('rain_rainbowAce')">
+        <div class="icon-box hover:text-#22c822" @click="handleCopy('rain_rainbowAce')">
           <icon name="wechat-2-line" size="22px" />
         </div>
         <div class="icon-box" @click="handleCopy('ciromail@126.com')">
           <icon name="mail-line" size="22px" />
         </div>
-        <router-link to="/sponsor" class="icon-box">
+        <router-link to="/sponsor" class="icon-box hover:text-red">
           <icon name="heart-3-line" size="22px" />
         </router-link>
       </div>

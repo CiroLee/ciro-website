@@ -1,32 +1,28 @@
 <script setup lang="ts">
 import BentoBox from './BentoBox.vue';
 import Loading from '@/components/Loading/index.vue';
-import request from '@/utils/request';
-import type { ContributionsRes, ContributionItem } from '@/types/github';
+import { useHomeStore } from '@/store/home';
 
-const contributions = reactive<ContributionItem[]>([]);
+const store = useHomeStore();
 const ulRef = ref<HTMLUListElement>();
-const lsLoading = ref(false);
+const isLoading = ref(false);
 
 const getContributions = async () => {
   try {
-    lsLoading.value = true;
-    const result = await request<ContributionsRes>({
-      method: 'GET',
-      url: '/api/tools/github/contributions',
-      params: { name: 'cirolee' },
-    });
-    contributions.length = 0;
-    contributions.push(...result.data.contributions);
-    lsLoading.value = false;
+    if (!store.contributions.length) {
+      isLoading.value = true;
+      await store.fetchContributions('cirolee');
+    }
   } catch (error) {
     console.error(error);
+  } finally {
+    isLoading.value = false;
   }
 };
 onMounted(async () => {
   await getContributions();
   if (ulRef.value) {
-    ulRef.value.scrollLeft = 10000000;
+    ulRef.value.scrollLeft = ulRef.value.scrollWidth;
   }
 });
 </script>
@@ -34,10 +30,10 @@ onMounted(async () => {
   <bento-box min-w-260px relative>
     <div p-10px>
       <p>github贡献</p>
-      <loading v-if="lsLoading" />
+      <loading v-if="isLoading" />
       <ul ref="ulRef" class="contributions">
         <li
-          v-for="con in contributions"
+          v-for="con in store.contributions"
           :key="con.date"
           class="contribution-box"
           :style="{ 'background-color': con.color }"
