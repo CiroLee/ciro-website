@@ -23,7 +23,7 @@ const handleCopy = (text: string) => {
         <a href="https://github.com/CiroLee" target="_blank" class="icon-box">
           <icon name="github-fill" size="22px" />
         </a>
-        <a href="https://space.bilibili.com/470243907" target="_blank" class="icon-box hover:text-#3987ed">
+        <a href="https://space.bilibili.com/470243907" target="_blank" class="icon-box hover:text-#fb7299">
           <icon name="bilibili-line" size="22px" />
         </a>
         <a href="https://twitter.com/duduclouds" target="_blank" class="icon-box hover:text-blue">

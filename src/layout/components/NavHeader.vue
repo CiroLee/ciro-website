@@ -1,6 +1,15 @@
 <script lang="ts" setup>
+import { themeChange } from '@/utils/theme';
+import { useDark } from '@/hooks';
 import Icon from '@/components/Icon/index.vue';
 import { navigationConfig } from '@/config';
+const isDark = useDark('color-theme');
+const toggleColorTheme = () => {
+  isDark.value = !isDark.value;
+  themeChange(isDark.value);
+
+  localStorage.setItem('color-theme', isDark.value ? 'dark' : 'light');
+};
 </script>
 <template>
   <nav mt-16px flex>
@@ -18,8 +27,8 @@ import { navigationConfig } from '@/config';
       <icon v-if="nav.icon" :name="nav.icon" />
       <span>{{ nav.name }}</span>
     </a>
-    <div class="nav__item theme">
-      <icon name="sun-line" />
+    <div class="nav__item theme" @click="toggleColorTheme">
+      <icon :name="isDark ? 'moon-line' : 'sun-line'" />
     </div>
   </nav>
 </template>
@@ -34,10 +43,9 @@ import { navigationConfig } from '@/config';
   &--active,
   &:hover {
     color: var(--color);
-    font-size: 800;
   }
   &:not(.theme):hover {
-    background-color: var(--light-active-bg);
+    background-color: var(--hover-bg);
   }
   @apply flex-center;
   & .cw-icon {

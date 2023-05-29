@@ -9,7 +9,7 @@ import 'remixicon/fonts/remixicon.css';
 import 'virtual:uno.css';
 
 const app = createApp(Layout);
-
+document.documentElement.classList.add('dark');
 app.use(createPinia());
 app.use(router);
 app.mount('#app');

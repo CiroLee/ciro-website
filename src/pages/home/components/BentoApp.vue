@@ -7,14 +7,14 @@ import { myApps } from '@/config';
     <div p-bento relative>
       <p>在使用的应用</p>
       <ul
-        h-44px
+        h-48px
         mt-42px
         rounded-8px
         border-1
         border-solid
         inline-flex
         items-center
-        px-2px
+        px-4px
         class="bg-black/8 ml-50% translate-x--50% backdrop-blur border-[var(--dock-border-color)]"
       >
         <a v-for="app in myApps" :key="app.key" :href="app.url" target="_blank" class="ul-item tool-tip">
@@ -31,6 +31,13 @@ import { myApps } from '@/config';
   height: 40px;
   position: relative;
   display: inline-block;
+  &:not(:first-child) {
+    margin-left: 2px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
   &__tip {
     font-size: 12px;
     height: 24px;

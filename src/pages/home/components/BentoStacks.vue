@@ -31,8 +31,7 @@ import { stacks } from '@/config';
     position: absolute;
     bottom: -26px;
     left: 0;
-    background: linear-gradient(to bottom, transparent 18px, rgb(230 229 229 / 88%) 19px),
-      linear-gradient(to right, transparent 18px, rgb(230 229 229 / 88%) 19px);
+    background: var(--grid-line-bg);
     background-size: 19px 19px;
   }
 }

@@ -6,8 +6,9 @@ export default defineConfig({
   presets: [presetUno(), presetAttributify()],
   theme: {
     breakpoints: {
-      md: '960px',
-      mobile: '480px',
+      mobile: '720px',
+      md: '840px',
+      lg: '980px',
     },
   },
   rules: [['p-bento', { padding: '12px' }]],

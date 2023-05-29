@@ -6,19 +6,23 @@ import MyProjects from './components/MyProjects.vue';
 import BentoContributions from './components/BentoContributions.vue';
 </script>
 <template>
-  <div class="home mt-54px overflow-hidden">
+  <div class="home mt-54px">
     <div flex-1 class="bento-grid">
       <bento-about-me row-span-2 />
       <bento-app row-span-1 />
       <bento-stacks class="stacks" row-span-2 />
       <bento-contributions />
     </div>
-    <my-projects mt-10px />
+    <my-projects class="my-projects" mt-10px />
   </div>
 </template>
 <style lang="scss" scoped>
 .bento-wrapper {
   display: flex;
+}
+
+.my-projects {
+  min-width: 600px;
 }
 
 .bento-grid {
@@ -27,9 +31,12 @@ import BentoContributions from './components/BentoContributions.vue';
   grid-gap: 10px;
 }
 
-@screen lt-md {
+@screen lt-mobile {
   .home {
     padding: 0 16px;
+  }
+  .my-projects {
+    min-width: unset;
   }
   .bento-wrapper {
     display: block;

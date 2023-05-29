@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BentoBox from './BentoBox.vue';
+import Icon from '@/components/Icon/index.vue';
 import Loading from '@/components/Loading/index.vue';
 import { useHomeStore } from '@/store/home';
 
@@ -19,18 +20,30 @@ const getContributions = async () => {
     isLoading.value = false;
   }
 };
+const scrollTo = (dir: 'left' | 'right') => {
+  if (!ulRef.value) return;
+  if (dir === 'right') {
+    ulRef.value.scrollLeft = ulRef.value.scrollWidth;
+  } else {
+    ulRef.value.scrollLeft = 0;
+  }
+};
 onMounted(async () => {
   await getContributions();
-  if (ulRef.value) {
-    ulRef.value.scrollLeft = ulRef.value.scrollWidth;
-  }
+  scrollTo('right');
 });
 </script>
 <template>
-  <bento-box min-w-260px relative>
+  <bento-box min-w-260px relative overflow-hidden>
     <div p-10px>
       <p>github贡献</p>
       <loading v-if="isLoading" />
+      <div class="contribution-arrow left" @click="scrollTo('left')">
+        <icon name="arrow-left-s-line" size="20px" />
+      </div>
+      <div class="contribution-arrow right" @click="scrollTo('right')">
+        <icon name="arrow-right-s-line" size="20px" />
+      </div>
       <ul ref="ulRef" class="contributions">
         <li
           v-for="con in store.contributions"
@@ -42,7 +55,7 @@ onMounted(async () => {
     </div>
   </bento-box>
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
 .contributions {
   width: 100%;
   height: 100px;
@@ -56,6 +69,35 @@ onMounted(async () => {
   margin: 0 auto;
   margin-top: 24px;
   scroll-behavior: smooth;
+  position: relative;
+  mix-blend-mode: var(--mix-blend-mode);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.contribution-arrow {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 58%;
+  border-radius: 2px;
+  color: var(--arrow-btn-color);
+  background-color: var(--arrow-btn-bg);
+  transition: color 0.1s linear;
+  display: flex;
+  @apply flex-center;
+
+  z-index: 2;
+  &:hover {
+    color: #fff;
+  }
+  &.left {
+    left: 14px;
+  }
+  &.right {
+    right: 14px;
+  }
 }
 
 .contribution-box {

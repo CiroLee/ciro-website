@@ -35,8 +35,8 @@ withDefaults(defineProps<LoadingProps>(), {
 .ring {
   width: 36px;
   height: 36px;
-  border: 4px rgb(31 192 125 / 25%) solid;
-  border-top: 4px rgb(31 192 125) solid;
+  border: 4px solid var(--loading-bg-1);
+  border-top: 4px solid var(--loading-bg-2);
   border-radius: 50%;
   animation: spin 0.6s infinite linear;
 }
