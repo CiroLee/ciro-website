@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  transition: color, background-color 0.2s linear;
 
   --webkit-tap-highlight-color: transparent;
   &::-webkit-scrollbar {
@@ -26,6 +25,8 @@ body {
   font-size: 16px;
   background-color: var(--body-bg);
 }
+
+// 全局样式
 
 .tool-tip {
   &__item {

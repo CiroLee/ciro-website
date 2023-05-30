@@ -51,7 +51,7 @@ const handleCopy = (text: string) => {
   display: flex;
   @apply flex-center;
   &:hover {
-    background-color: var(--hover-bg);
+    background-color: var(--me-box-hover-bg);
   }
   &:not(:first-child) {
     margin-left: 4px;

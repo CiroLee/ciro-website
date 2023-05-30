@@ -11,7 +11,19 @@ export default defineConfig({
       lg: '980px',
     },
   },
-  rules: [['p-bento', { padding: '12px' }]],
+  rules: [
+    ['p-bento', { padding: '12px' }],
+    [
+      /^ellipse-(\d+)$/,
+      ([, d]: any[]) => ({
+        '-webkit-box-orient': 'vertical',
+        'text-overflow': 'ellipsis',
+        '-webkit-line-clamp': d,
+        overflow: 'hidden',
+        display: '-webkit-box',
+      }),
+    ],
+  ],
   shortcuts: {
     'flex-center': 'justify-center items-center',
   },

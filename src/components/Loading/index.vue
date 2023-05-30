@@ -10,7 +10,7 @@ withDefaults(defineProps<LoadingProps>(), {
 </script>
 <template>
   <div class="cw-loading" :class="[{ global, 'blur-mask': blurMask }]">
-    <div class="ring"></div>
+    <div class="circle"></div>
   </div>
 </template>
 <style lang="scss">
@@ -30,15 +30,14 @@ withDefaults(defineProps<LoadingProps>(), {
   &.blur-mask {
     backdrop-filter: blur(2px);
   }
-}
-
-.ring {
-  width: 36px;
-  height: 36px;
-  border: 4px solid var(--loading-bg-1);
-  border-top: 4px solid var(--loading-bg-2);
-  border-radius: 50%;
-  animation: spin 0.6s infinite linear;
+  .circle {
+    width: 36px;
+    height: 36px;
+    border: 4px solid var(--loading-bg-1);
+    border-top: 4px solid var(--loading-bg-2);
+    border-radius: 50%;
+    animation: spin 0.6s infinite linear;
+  }
 }
 
 @keyframes spin {

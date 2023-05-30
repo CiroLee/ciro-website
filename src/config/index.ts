@@ -19,6 +19,14 @@ interface StacksConfig {
   size: number;
   style: CSSProperties;
 }
+
+interface ProjectConfig {
+  key: string;
+  icon: string;
+  title: string;
+  desc: string;
+  url: string;
+}
 export const navigationConfig: { inner: NavigationConfig[]; outer: NavigationConfig[] } = {
   inner: [
     {
@@ -159,5 +167,43 @@ export const stacks: StacksConfig[] = [
     url: 'https://ciro.club/statics/images/icons/1671037687_Gbt6gyAnONMkLA63Jm_43.svg',
     size: 44,
     style: { top: '100px', right: '76%' },
+  },
+];
+
+export const myProjects: ProjectConfig[] = [
+  {
+    icon: 'https://ciro.club/statics/images/icons/1682873373_YggRbBlEO27aMfDQel6K6.svg',
+    key: 'chaty',
+    title: 'ChatY',
+    desc: 'ChatY 是基于 wails开发的开源 GPT 桌面客户端。它也许是你电脑中最漂亮的 ChatGPT 助手',
+    url: 'https://github.com/CiroLee/ChatY',
+  },
+  {
+    icon: 'https://ciro.club/statics/images/icons/1675059915_m7YGDKvxFJ6ZxxxSNx7Fg.svg',
+    key: 'bf',
+    title: 'bf',
+    desc: '基于百度翻译Api的命令行翻译工具',
+    url: 'https://github.com/CiroLee/bf',
+  },
+  {
+    icon: 'https://ciro.club/statics/images/icons/1670514276_2qXv2WbmjwXsl9QsIHcpK.svg',
+    title: '搜索直达',
+    key: 'direct-search',
+    desc: '直达搜索目标页面，快人一步',
+    url: 'https://github.com/CiroLee/direct-search',
+  },
+  {
+    key: 'tiny-lorem',
+    title: 'tiny-lorem',
+    desc: '用于生成模拟数据的现代JavaScript工具库',
+    icon: 'https://ciro.club/statics/images/icons/1671040126_sJJ__CzS1xMlbFRzvtJnz.svg',
+    url: 'https://github.com/CiroLee/tiny-lorem',
+  },
+  {
+    key: 'termts',
+    title: 'termts',
+    desc: 'termts是一个集合，包含小巧而实用的终端脚本工具',
+    icon: 'https://ciro.club/statics/images/icons/1677073378_cn9z8zOsGVkHhuXm-EcXY.svg',
+    url: 'https://github.com/CiroLee/termts',
   },
 ];

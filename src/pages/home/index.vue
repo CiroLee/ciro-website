@@ -14,6 +14,12 @@ import BentoContributions from './components/BentoContributions.vue';
       <bento-contributions />
     </div>
     <my-projects class="my-projects" mt-10px />
+    <footer mb-6 mt-80px>
+      <div text-center text-sm class="text-[var(--sub-color)]">
+        网站备案号:
+        <a class="hover:text-#4a9fff" href="https://beian.miit.gov.cn/" targe="_blank">粤ICP备2022058803号-1</a>
+      </div>
+    </footer>
   </div>
 </template>
 <style lang="scss" scoped>

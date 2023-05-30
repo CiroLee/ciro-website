@@ -1,9 +1,10 @@
 html {
   --color: #333;
-  --sub-color: #666;
-  --body-bg: #f1f1f1;
+  --sub-color: #999898;
+  --body-bg: #fff;
   --mask-bg: 255 255 255;
-  --hover-bg: #f5f5f5;
+  --me-box-hover-bg: rgb(202 202 202 / 25%);
+  --hover-bg: #ecebeb;
   --arrow-btn-bg: rgb(0 0 0 / 12%);
   --arrow-btn-color: rgb(0 0 0 / 24%);
   --bento-box-bg: linear-gradient(135deg, #f6fdfc 33%, #f2ecfc 100%);
@@ -21,6 +22,8 @@ html {
   --dock-border-color: #d5d5d5;
   --tooltip-bg: rgb(255 255 255 / 80%);
   --tooltip-border-color: #e2e2e2;
+  --box-border-color: #e2e2e2;
+  --hover-box-border-color: #b597f7;
   --scrollbar-thumb: rgb(46 46 46 / 8%);
   --scrollbar-thumb-hover: #8c8c8c;
   --mix-blend-mode: normal;
@@ -32,9 +35,11 @@ html {
 
 html.dark {
   --color: #f1f1f1;
+  --sub-color: #9a9a9a;
   --body-bg: #242424;
   --mask-bg: 0 0 0;
-  --hover-bg: #404343;
+  --hover-bg: #353535;
+  --me-box-hover-bg: rgb(27 36 45 / 25%);
   --arrow-btn-bg: rgb(0 0 0 / 24%);
   --arrow-btn-color: rgb(255 255 255 / 60%);
   --arrow-btn-hover-color: #fff;
@@ -45,6 +50,8 @@ html.dark {
   --dock-border-color: #585858;
   --tooltip-bg: rgb(0 0 0 / 30%);
   --tooltip-border-color: #454545;
+  --box-border-color: rgb(85 90 98 / 56%);
+  --hover-box-border-color: #347f86;
   --grid-line-bg: linear-gradient(to bottom, transparent 18px, rgb(50 50 50 / 88%) 19px),
     linear-gradient(to right, transparent 18px, rgb(50 50 50 / 88%) 19px);
   --mix-blend-mode: difference;
