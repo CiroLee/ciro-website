@@ -21,7 +21,7 @@ html {
   --message-shadow: 0px 2px 12px -4px rgb(0 0 0 / 10%), 0px 8px 20px -8px rgb(0 0 0 / 4%);
   --dock-border-color: #d5d5d5;
   --tooltip-bg: rgb(255 255 255 / 80%);
-  --tooltip-border-color: #e2e2e2;
+  --tooltip-border-color: rgb(199 199 199 / 30%);
   --box-border-color: #e2e2e2;
   --hover-box-border-color: #b597f7;
   --scrollbar-thumb: rgb(46 46 46 / 8%);
@@ -48,8 +48,8 @@ html.dark {
   --scrollbar-thumb: rgb(82 82 82 / 40%);
   --scrollbar-thumb-hover: #565656;
   --dock-border-color: #585858;
-  --tooltip-bg: rgb(0 0 0 / 30%);
-  --tooltip-border-color: #454545;
+  --tooltip-bg: rgb(0 0 0 / 40%);
+  --tooltip-border-color: rgb(74 74 74 / 30%);
   --box-border-color: rgb(85 90 98 / 56%);
   --hover-box-border-color: #347f86;
   --grid-line-bg: linear-gradient(to bottom, transparent 18px, rgb(50 50 50 / 88%) 19px),

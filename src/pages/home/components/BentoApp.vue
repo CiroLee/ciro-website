@@ -38,24 +38,5 @@ import { myApps } from '@/config';
     width: 100%;
     height: 100%;
   }
-  &__tip {
-    font-size: 12px;
-    height: 24px;
-    position: absolute;
-    top: -32px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--tooltip-bg);
-    border-radius: 4px;
-    border: 1px solid var(--tooltip-border-color);
-    padding: 0 8px;
-    display: none;
-    @apply flex-center;
-  }
-  &:hover {
-    .ul-item__tip {
-      display: flex;
-    }
-  }
 }
 </style>

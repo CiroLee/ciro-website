@@ -23,7 +23,7 @@ const fontsize = computed(() => `${props.size}`);
 <template>
   <i class="cw-icon" :class="`ri-${name}`" :style="style"></i>
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
 .cw-icon {
   color: v-bind(color);
   font-size: v-bind(fontsize);

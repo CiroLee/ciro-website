@@ -23,10 +23,6 @@ import BentoContributions from './components/BentoContributions.vue';
   </div>
 </template>
 <style lang="scss" scoped>
-.bento-wrapper {
-  display: flex;
-}
-
 .my-projects {
   min-width: 600px;
 }
@@ -43,9 +39,6 @@ import BentoContributions from './components/BentoContributions.vue';
   }
   .my-projects {
     min-width: unset;
-  }
-  .bento-wrapper {
-    display: block;
   }
   .bento-grid {
     display: block;

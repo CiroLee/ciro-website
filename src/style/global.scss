@@ -33,10 +33,11 @@ body {
     font-size: 12px;
     height: 24px;
     position: absolute;
-    top: -32px;
+    top: -36px;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--tooltip-bg);
+    backdrop-filter: blur(4px);
     border-radius: 4px;
     border: 1px solid var(--tooltip-border-color);
     padding: 0 8px;
