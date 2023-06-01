@@ -4,7 +4,7 @@ html {
   --body-bg: #fff;
   --mask-bg: 255 255 255;
   --me-box-hover-bg: rgb(202 202 202 / 25%);
-  --hover-bg: #ecebeb;
+  --hover-bg: #f3f1f1;
   --arrow-btn-bg: rgb(0 0 0 / 12%);
   --arrow-btn-color: rgb(0 0 0 / 24%);
   --bento-box-bg: linear-gradient(135deg, #f6fdfc 33%, #f2ecfc 100%);
@@ -31,6 +31,12 @@ html {
     linear-gradient(to right, transparent 18px, rgb(230 229 229 / 88%) 19px);
   --loading-bg-1: rgb(31 192 125 / 25%);
   --loading-bg-2: rgb(31 192 125);
+  --shortcut-bg: #efefef;
+  --shortcut-color: #9c9c9c;
+  --shortcut-border-color: #c2c2c2;
+  --tag-bg: var(--hover-bg);
+  --tag-color: #b3b3b3;
+  --label-arrow-bg: #fff, rgb(255 255 255 / 12%);
 }
 
 html.dark {
@@ -67,4 +73,10 @@ html.dark {
   --message-shadow: 0px 2px 12px -4px rgb(0 0 0 / 20%), 0px 8px 20px -8px rgb(0 0 0 / 8%);
   --loading-bg-1: rgb(53 145 107 / 25%);
   --loading-bg-2: rgb(23 162 104);
+  --shortcut-bg: #3e3d3d;
+  --shortcut-color: #e2e2e2;
+  --shortcut-border-color: #595959;
+  --tag-bg: var(--hover-bg);
+  --tag-color: #bababa;
+  --label-arrow-bg: rgb(36 36 36), rgb(36 36 36 / 10%);
 }

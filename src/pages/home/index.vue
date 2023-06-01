@@ -6,7 +6,7 @@ import MyProjects from './components/MyProjects.vue';
 import BentoContributions from './components/BentoContributions.vue';
 </script>
 <template>
-  <div class="home mt-54px">
+  <div class="home">
     <div flex-1 class="bento-grid">
       <bento-about-me row-span-2 />
       <bento-app row-span-1 />
@@ -23,8 +23,9 @@ import BentoContributions from './components/BentoContributions.vue';
   </div>
 </template>
 <style lang="scss" scoped>
-.my-projects {
-  min-width: 600px;
+.home {
+  margin: auto;
+  margin-top: 54px;
 }
 
 .bento-grid {
@@ -33,8 +34,14 @@ import BentoContributions from './components/BentoContributions.vue';
   grid-gap: 10px;
 }
 
+.my-projects {
+  min-width: 600px;
+}
+
 @screen lt-mobile {
   .home {
+    max-width: 100%;
+    overflow: hidden;
     padding: 0 16px;
   }
   .my-projects {
@@ -48,6 +55,30 @@ import BentoContributions from './components/BentoContributions.vue';
   }
   .stacks {
     min-height: 220px;
+  }
+}
+
+@screen at-mobile {
+  .home {
+    max-width: 84vw;
+  }
+}
+
+@screen at-md {
+  .home {
+    max-width: 84vw;
+  }
+}
+
+@screen at-md {
+  .home {
+    max-width: 62vw;
+  }
+}
+
+@screen at-lg {
+  .home {
+    max-width: 62vw;
   }
 }
 </style>

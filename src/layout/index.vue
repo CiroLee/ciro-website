@@ -14,37 +14,3 @@ watchEffect(() => {
     <router-view />
   </div>
 </template>
-<style lang="scss" scoped>
-// md:max-w-72vw lg:w-62w
-
-@screen lt-mobile {
-  .layout {
-    max-width: 100%;
-    overflow: hidden;
-  }
-}
-
-@screen at-mobile {
-  .layout {
-    max-width: 84vw;
-  }
-}
-
-@screen at-md {
-  .layout {
-    max-width: 84vw;
-  }
-}
-
-@screen at-md {
-  .layout {
-    max-width: 62vw;
-  }
-}
-
-@screen at-lg {
-  .layout {
-    max-width: 62vw;
-  }
-}
-</style>

@@ -4,6 +4,12 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
+  fe-gear:
+    specifier: ^1.0.4
+    version: 1.0.4
+  hotkeys-js:
+    specifier: ^3.10.2
+    version: 3.10.2
   pinia:
     specifier: ^2.1.3
     version: 2.1.3(typescript@5.0.4)(vue@3.3.4)
@@ -2079,6 +2085,10 @@ packages:
       reusify: 1.0.4
     dev: true
 
+  /fe-gear@1.0.4:
+    resolution: {integrity: sha512-PBBRCw5O/GRxlIJ+EGpObYZ5xLxx88VNAy6RMECJ1LPFhne/A8LAB4o7/oxcpusVEENHRf7/Hp87VIRf0QCKgA==}
+    dev: false
+
   /file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -2318,6 +2328,10 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
+
+  /hotkeys-js@3.10.2:
+    resolution: {integrity: sha512-Z6vLmJTYzkbZZXlBkhrYB962Q/rZGc/WHQiyEGu9ZZVF7bAeFDjjDa31grWREuw9Ygb4zmlov2bTkPYqj0aFnQ==}
+    dev: false
 
   /html-tags@3.3.1:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}

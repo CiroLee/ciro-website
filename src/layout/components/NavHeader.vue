@@ -12,7 +12,7 @@ const toggleColorTheme = () => {
 };
 </script>
 <template>
-  <nav mt-16px flex>
+  <nav mt-16px flex justify-center overflow-hidden>
     <router-link
       v-for="nav in navigationConfig.inner"
       :key="nav.key"
