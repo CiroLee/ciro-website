@@ -1,7 +1,8 @@
 html {
   --color: #333;
   --sub-color: #999898;
-  --body-bg: #fff;
+  --body-bg: 255 255 255;
+  --nav-card-bg: var(--body-bg);
   --mask-bg: 255 255 255;
   --me-box-hover-bg: rgb(202 202 202 / 25%);
   --hover-bg: #f3f1f1;
@@ -34,15 +35,18 @@ html {
   --shortcut-bg: #efefef;
   --shortcut-color: #9c9c9c;
   --shortcut-border-color: #c2c2c2;
-  --tag-bg: var(--hover-bg);
+  --tag-bg: #f3f1f1;
   --tag-color: #b3b3b3;
+  --tag-hover-bg: #e6e6e6;
+  --tag-hover-color: #717171;
   --label-arrow-bg: #fff, rgb(255 255 255 / 12%);
 }
 
 html.dark {
   --color: #f1f1f1;
   --sub-color: #9a9a9a;
-  --body-bg: #242424;
+  --body-bg: 36 36 36;
+  --nav-card-bg: 39, 39, 39;
   --mask-bg: 0 0 0;
   --hover-bg: #353535;
   --me-box-hover-bg: rgb(27 36 45 / 25%);
@@ -61,7 +65,7 @@ html.dark {
   --grid-line-bg: linear-gradient(to bottom, transparent 18px, rgb(50 50 50 / 88%) 19px),
     linear-gradient(to right, transparent 18px, rgb(50 50 50 / 88%) 19px);
   --mix-blend-mode: difference;
-  --message-bg: var(--body-bg);
+  --message-bg: rgb(var(--body-bg));
   --message-success-border-color: #7aa77c;
   --message-success-color: #3ce543;
   --message-warn-border-color: #7d7153;
@@ -76,7 +80,9 @@ html.dark {
   --shortcut-bg: #3e3d3d;
   --shortcut-color: #e2e2e2;
   --shortcut-border-color: #595959;
-  --tag-bg: var(--hover-bg);
+  --tag-bg: #353535;
   --tag-color: #bababa;
+  --tag-hover-bg: #4e4e4e;
+  --tag-hover-color: #d2d2d2;
   --label-arrow-bg: rgb(36 36 36), rgb(36 36 36 / 10%);
 }

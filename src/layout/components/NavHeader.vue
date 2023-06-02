@@ -12,7 +12,7 @@ const toggleColorTheme = () => {
 };
 </script>
 <template>
-  <nav mt-16px flex justify-center overflow-hidden>
+  <nav flex justify-center px-16px py-10px overflow-hidden fixed top-0 left-0 w-full>
     <router-link
       v-for="nav in navigationConfig.inner"
       :key="nav.key"
@@ -33,6 +33,11 @@ const toggleColorTheme = () => {
   </nav>
 </template>
 <style lang="scss" scoped>
+nav {
+  z-index: $nav-header-z-index;
+  background-color: rgb(var(--body-bg));
+}
+
 .nav__item {
   display: inline-flex;
   height: 32px;
@@ -50,12 +55,6 @@ const toggleColorTheme = () => {
   @apply flex-center;
   & .cw-icon {
     margin-right: 2px;
-  }
-}
-
-@screen lt-md {
-  nav {
-    padding: 0 16px;
   }
 }
 </style>

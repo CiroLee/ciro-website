@@ -15,7 +15,7 @@ app.use(router);
 app.mount('#app');
 
 const MODE = import.meta.env.MODE;
-if (MODE) {
+if (MODE! == 'development') {
   // 百度统计
   // eslint-disable-next-line no-var
   var _hmt: any = _hmt || [];

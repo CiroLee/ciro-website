@@ -25,7 +25,7 @@ import BentoContributions from './components/BentoContributions.vue';
 <style lang="scss" scoped>
 .home {
   margin: auto;
-  margin-top: 54px;
+  margin-top: calc($content-to-header + 24px);
 }
 
 .bento-grid {
