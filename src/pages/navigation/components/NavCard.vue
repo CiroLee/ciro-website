@@ -1,25 +1,28 @@
 <script lang="ts" setup>
 import Icon from '@/components/Icon/index.vue';
+import message from '@/components/Message';
 import { Navigation } from '@/types/navigation';
+import { copyToClipboard } from '@/utils/utils';
 defineProps<Partial<Navigation>>();
 const goTo = (event: Event, url?: string) => {
   const target = event.target as HTMLElement;
   if (target.classList.contains('link-btn')) return;
   window.open(url);
 };
-const copyLink = (event: Event, url?: string) => {
-  event.preventDefault();
-  console.log('copy', url);
+const copyLink = (url?: string) => {
+  copyToClipboard(url || '').then(() => {
+    message.success('copied');
+  });
 };
 </script>
 <template>
   <div class="nav-card" @click="goTo($event, siteUrl)">
-    <div flex items-center justify-between>
-      <div flex items-center>
+    <div flex items-center>
+      <div flex items-center flex-1 overflow-hidden>
         <img w-32px object-fill :src="logoUrl" alt="" />
-        <p truncate text-14px ml-8px>{{ title }}</p>
+        <p truncate text-14px mx-8px>{{ title }}</p>
       </div>
-      <div class="link-btn" @click="copyLink($event, siteUrl)">
+      <div class="link-btn" @click="copyLink(siteUrl)">
         <icon name="file-copy-line" size="12px" class="mt-1px pointer-events-none" />
         <span ml-2px pointer-events-none>link</span>
       </div>
@@ -51,7 +54,8 @@ const copyLink = (event: Event, url?: string) => {
     color: var(--tag-color);
     padding: 0 8px;
     font-size: 12px;
-    height: 20px;
+    width: 50px;
+    height: 24px;
     border-radius: 3px;
     display: flex;
     @apply flex-center;
@@ -64,6 +68,7 @@ const copyLink = (event: Event, url?: string) => {
   }
   &:hover {
     transform: translateY(-2px);
+    border-color: var(--hover-box-border-color);
   }
 }
 </style>

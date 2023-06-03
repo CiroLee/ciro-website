@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import ToggleSearch from './components/ToggleSearch.vue';
+import Loading from '@/components/Loading/index.vue';
 import Icon from '@/components/Icon/index.vue';
 import NavCard from './components/NavCard.vue';
+import BackTop from '@/components/BackTop/index.vue';
 import request from '@/utils/request';
 import { HTTP_STATUS } from '@/utils/constants';
 import type { Label, LabelRes, Navigation, NavigationList, NavigationRes } from '@/types/navigation';
@@ -9,6 +11,7 @@ import type { Label, LabelRes, Navigation, NavigationList, NavigationRes } from 
 const labelsRef = ref<HTMLDivElement>();
 const labels = reactive<Label[]>([]);
 const navigation = reactive<NavigationList[]>([]);
+const isLoading = ref(false);
 
 const handleOpenSearch = () => {
   console.log('open search');
@@ -17,7 +20,7 @@ const handleOpenSearch = () => {
 const labelsScrollTo = (dir: 'left' | 'right') => {
   if (!labelsRef.value) return;
   const scrollWidth = labelsRef.value.scrollWidth;
-  const step = scrollWidth / 10;
+  const step = scrollWidth / 4;
   if (dir === 'left') {
     labelsRef.value.scrollLeft -= step;
   } else {
@@ -68,6 +71,7 @@ const filterByLabelId = (labelId: string, navigation: Navigation[]) => {
 };
 
 const renderNavList = async () => {
+  isLoading.value = true;
   await getLabels();
   const list = (await getNavigationList()) || [];
   navigation.length = 0;
@@ -79,6 +83,17 @@ const renderNavList = async () => {
       .sort((a, b) => a.title.localeCompare(b.title)),
   }));
   navigation.push(...filteredList);
+  isLoading.value = false;
+};
+
+// 平滑跳转到指定条目
+const jumpTo = (id: string) => {
+  const element = document.getElementById(id);
+
+  window?.scrollTo({
+    top: element?.offsetTop ? element.offsetTop - 180 : 0,
+    behavior: 'smooth',
+  });
 };
 
 onMounted(() => {
@@ -87,6 +102,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="navigation">
+    <loading v-if="isLoading" global />
     <div fixed left-0 w-full class="nav-search">
       <toggle-search mx-auto class="mobile:max-w-md" @click="handleOpenSearch" @open-search="handleOpenSearch" />
       <div class="labels-wrapper">
@@ -94,7 +110,9 @@ onMounted(() => {
           <icon name="arrow-left-s-line mt-1px" />
         </div>
         <div ref="labelsRef" class="labels no-scrollbar">
-          <div v-for="label in labels" :key="label.labelId" class="label-item">{{ label.label }}</div>
+          <div v-for="label in labels" :key="label.labelId" class="label-item" @click="jumpTo(label.labelId)">
+            {{ label.label }}
+          </div>
         </div>
         <div class="label-arrow right" @click="labelsScrollTo('right')">
           <icon name="arrow-right-s-line mt-1px ml-auto" />
@@ -102,8 +120,8 @@ onMounted(() => {
       </div>
     </div>
     <div class="navigation__pane">
-      <div v-for="nav in navigation" :id="nav.id" :key="nav.id">
-        <h4 mb-2>{{ nav.title }}</h4>
+      <div v-for="nav in navigation" :id="nav.id" :key="nav.id" py-16px>
+        <h4 mb-3>{{ nav.title }}</h4>
         <div>
           <nav-card
             v-for="card in nav.contents"
@@ -118,18 +136,18 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <back-top listen-node="window" />
   </div>
 </template>
 <style lang="scss" scoped>
 .navigation {
-  height: 100vh;
   margin: auto;
   margin-top: 52px;
 }
 
 .navigation__pane {
   padding: 0 8%;
-  padding-top: 140px;
+  padding-top: 126px;
 }
 
 .nav-search {
@@ -142,10 +160,7 @@ onMounted(() => {
   max-width: 80%;
   margin-left: 8%;
   margin-top: 24px;
-  padding-bottom: 10px;
   position: relative;
-
-  // mt-24px pb-2 relative
 }
 
 .labels {
@@ -175,7 +190,7 @@ onMounted(() => {
 .label-arrow {
   position: absolute;
   top: 0;
-  width: 28px;
+  width: 20px;
   height: 28px;
   display: flex;
   align-items: center;
@@ -191,10 +206,6 @@ onMounted(() => {
     background: linear-gradient(to left, var(--label-arrow-bg));
   }
 }
-
-// .navigation__pane {
-
-// }
 
 @screen lt-mobile {
   .navigation {

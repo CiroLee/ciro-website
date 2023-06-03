@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => ({
       // scss 全局变量引入
       // https://vitejs.bootcss.com/config/#css-modules
       scss: {
-        additionalData: `@import "@/style/variables.scss";`,
+        additionalData: `@import "@/styles/variables.scss";`,
       },
     },
   },

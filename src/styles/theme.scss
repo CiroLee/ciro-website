@@ -1,6 +1,7 @@
 html {
   --color: #333;
   --sub-color: #999898;
+  --placeholder-color: #cfcbcb;
   --body-bg: 255 255 255;
   --nav-card-bg: var(--body-bg);
   --mask-bg: 255 255 255;
@@ -24,8 +25,8 @@ html {
   --tooltip-bg: rgb(255 255 255 / 80%);
   --tooltip-border-color: rgb(199 199 199 / 30%);
   --box-border-color: #e2e2e2;
-  --hover-box-border-color: #b597f7;
-  --scrollbar-thumb: rgb(46 46 46 / 8%);
+  --hover-box-border-color: #95cec6;
+  --scrollbar-thumb: rgb(46 46 46 / 30%);
   --scrollbar-thumb-hover: #8c8c8c;
   --mix-blend-mode: normal;
   --grid-line-bg: linear-gradient(to bottom, transparent 18px, rgb(230 229 229 / 88%) 19px),
@@ -40,11 +41,15 @@ html {
   --tag-hover-bg: #e6e6e6;
   --tag-hover-color: #717171;
   --label-arrow-bg: #fff, rgb(255 255 255 / 12%);
+  --back-top-bg: rgb(var(--body-bg));
+  --back-top-border-color: rgb(0 0 0 / 10%);
+  --back-top-hover-color: #95cec6;
 }
 
 html.dark {
   --color: #f1f1f1;
   --sub-color: #9a9a9a;
+  --placeholder-color: #747474;
   --body-bg: 36 36 36;
   --nav-card-bg: 39, 39, 39;
   --mask-bg: 0 0 0;
@@ -61,7 +66,7 @@ html.dark {
   --tooltip-bg: rgb(0 0 0 / 40%);
   --tooltip-border-color: rgb(74 74 74 / 30%);
   --box-border-color: rgb(85 90 98 / 56%);
-  --hover-box-border-color: #347f86;
+  --hover-box-border-color: #2c6b5f;
   --grid-line-bg: linear-gradient(to bottom, transparent 18px, rgb(50 50 50 / 88%) 19px),
     linear-gradient(to right, transparent 18px, rgb(50 50 50 / 88%) 19px);
   --mix-blend-mode: difference;
@@ -85,4 +90,7 @@ html.dark {
   --tag-hover-bg: #4e4e4e;
   --tag-hover-color: #d2d2d2;
   --label-arrow-bg: rgb(36 36 36), rgb(36 36 36 / 10%);
+  --back-top-bg: rgb(var(--nav-card-bg));
+  --back-top-border-color: rgb(100 100 100 / 36%);
+  --back-top-hover-color: #2c6b5f;
 }

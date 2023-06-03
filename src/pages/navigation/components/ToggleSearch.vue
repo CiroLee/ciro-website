@@ -16,6 +16,7 @@ hotkeys('ctrl+k,command+k', event => {
 </script>
 <template>
   <div class="toggle-search">
+    <span class="text-[var(--placeholder-color)]">Searching...</span>
     <div>
       <div class="toggle-search__shortcut-item">{{ isMac() ? '⌘' : 'Ctrl' }}</div>
       <div class="toggle-search__shortcut-item">K</div>
@@ -29,7 +30,7 @@ hotkeys('ctrl+k,command+k', event => {
   padding: 0 12px;
   border: 1px solid var(--box-border-color);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   cursor: pointer;
   &__shortcut-item {

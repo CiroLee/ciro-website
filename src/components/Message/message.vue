@@ -39,6 +39,7 @@ onMounted(() => {
   background-color: var(--message-bg);
   box-shadow: var(--message-shadow);
   border: 1px solid;
+  z-index: $message-z-index;
   &__text {
     margin-left: 8px;
     color: var(--color);

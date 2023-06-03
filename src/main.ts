@@ -2,9 +2,9 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import Layout from './layout/index.vue';
 import router from './router';
-import './style/minireset.css';
-import './style/theme.scss';
-import './style/global.scss';
+import './styles/minireset.css';
+import './styles/theme.scss';
+import './styles/global.scss';
 import 'remixicon/fonts/remixicon.css';
 import 'virtual:uno.css';
 
@@ -15,7 +15,7 @@ app.use(router);
 app.mount('#app');
 
 const MODE = import.meta.env.MODE;
-if (MODE! == 'development') {
+if (MODE !== 'development') {
   // 百度统计
   // eslint-disable-next-line no-var
   var _hmt: any = _hmt || [];
