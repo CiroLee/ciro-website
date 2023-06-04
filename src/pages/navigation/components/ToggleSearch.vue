@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import Shortcut from '@/components/Shortcut/index.vue';
 import hotkeys from 'hotkeys-js';
 import { isMac } from '@/utils/utils';
 
@@ -18,8 +19,8 @@ hotkeys('ctrl+k,command+k', event => {
   <div class="toggle-search">
     <span class="text-[var(--placeholder-color)]">Searching...</span>
     <div>
-      <div class="toggle-search__shortcut-item">{{ isMac() ? '⌘' : 'Ctrl' }}</div>
-      <div class="toggle-search__shortcut-item">K</div>
+      <shortcut>{{ isMac() ? '⌘' : 'Ctrl' }}</shortcut>
+      <shortcut>K</shortcut>
     </div>
   </div>
 </template>
@@ -33,19 +34,5 @@ hotkeys('ctrl+k,command+k', event => {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  &__shortcut-item {
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-    background-color: var(--shortcut-bg);
-    border: 1px solid var(--shortcut-border-color);
-    color: var(--shortcut-color);
-    display: inline-flex;
-    font-size: 14px;
-    @apply flex-center;
-    &:not(:first-child) {
-      margin-left: 10px;
-    }
-  }
 }
 </style>

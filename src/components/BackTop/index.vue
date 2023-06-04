@@ -38,8 +38,6 @@ onMounted(() => {
       'scroll',
       debounce(() => {
         const scrollTop = scrollEl.scrollTop;
-        console.log(scrollTop);
-
         if (scrollTop > props.visibleHeight) {
           show.value = true;
         } else {

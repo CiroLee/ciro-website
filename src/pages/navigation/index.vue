@@ -4,6 +4,7 @@ import Loading from '@/components/Loading/index.vue';
 import Icon from '@/components/Icon/index.vue';
 import NavCard from './components/NavCard.vue';
 import BackTop from '@/components/BackTop/index.vue';
+import SearchContainer from './components/SearchContainer.vue';
 import request from '@/utils/request';
 import { HTTP_STATUS } from '@/utils/constants';
 import type { Label, LabelRes, Navigation, NavigationList, NavigationRes } from '@/types/navigation';
@@ -12,9 +13,14 @@ const labelsRef = ref<HTMLDivElement>();
 const labels = reactive<Label[]>([]);
 const navigation = reactive<NavigationList[]>([]);
 const isLoading = ref(false);
+const showSearch = ref(false);
 
 const handleOpenSearch = () => {
-  console.log('open search');
+  showSearch.value = true;
+};
+
+const handleCloseSearch = () => {
+  showSearch.value = false;
 };
 
 const labelsScrollTo = (dir: 'left' | 'right') => {
@@ -59,7 +65,7 @@ const getNavigationList = async () => {
       return result.data.list;
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -104,7 +110,13 @@ onMounted(() => {
   <div class="navigation">
     <loading v-if="isLoading" global />
     <div fixed left-0 w-full class="nav-search">
-      <toggle-search mx-auto class="mobile:max-w-md" @click="handleOpenSearch" @open-search="handleOpenSearch" />
+      <toggle-search
+        v-if="!showSearch"
+        mx-auto
+        class="mobile:max-w-md"
+        @click="handleOpenSearch"
+        @open-search="handleOpenSearch"
+      />
       <div class="labels-wrapper">
         <div class="label-arrow left" @click="labelsScrollTo('left')">
           <icon name="arrow-left-s-line mt-1px" />
@@ -137,6 +149,7 @@ onMounted(() => {
       </div>
     </div>
     <back-top listen-node="window" />
+    <search-container :show="showSearch" @close="handleCloseSearch" />
   </div>
 </template>
 <style lang="scss" scoped>

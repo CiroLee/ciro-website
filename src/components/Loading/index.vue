@@ -23,7 +23,7 @@ withDefaults(defineProps<LoadingProps>(), {
   justify-content: center;
   align-items: center;
   background-color: rgb(var(--mask-bg) / 20%);
-  z-index: $loading-z-index;
+  z-index: $float-layer-z-index;
   &.global {
     position: fixed;
   }
