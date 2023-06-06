@@ -2,10 +2,12 @@
 import Shortcut from '@/components/Shortcut/index.vue';
 import Icon from '@/components/Icon/index.vue';
 import hotkeys from 'hotkeys-js';
-import type { Navigation } from '@/types/navigation';
+import Fuse from 'fuse.js';
+import type { Navigation, NavigationList } from '@/types/navigation';
 
 interface SearchContainerProps {
   show: boolean;
+  source: NavigationList[];
 }
 const props = defineProps<SearchContainerProps>();
 const emit = defineEmits({
@@ -13,55 +15,89 @@ const emit = defineEmits({
 });
 
 const inputRef = ref<HTMLInputElement>();
+const query = ref('');
 const activeKey = ref('');
-// 搜索得到的结果 mock now
-const list = reactive<Navigation[]>([
-  {
-    navId: 'aaa',
-    title: 'xxx',
-    siteUrl: 'https://www.baidu.com',
-    desc: 'dsds',
-    logoUrl: 'https://ciro.club/statics/images/icons/1670514276_2qXv2WbmjwXsl9QsIHcpK.svg',
-  },
-  {
-    navId: 'bbb',
-    title: 'xxx',
-    siteUrl: 'https://www.baidu.com',
-    desc: 'dsds',
-    logoUrl: 'https://ciro.club/statics/images/icons/1670514276_2qXv2WbmjwXsl9QsIHcpK.svg',
-  },
-]);
+const timer = ref();
+const list = reactive<Navigation[]>([]);
+
+// 搜索处理
+const handleSearch = () => {
+  const fuse = new Fuse(props.source, {
+    keys: ['contents.title', 'contents.tag'],
+  });
+
+  const result = fuse
+    .search(query.value)
+    .sort((prev, next) => prev.refIndex - next.refIndex)
+    .map(doc => ({
+      ...doc.item,
+      contents: doc.item.title.includes(query.value)
+        ? doc.item.contents
+        : doc.item.contents.filter(c => c.title.includes(query.value) || c.tag?.includes(query.value)),
+    }))
+    .filter(item => item.contents.length);
+
+  const flatList = result.map(item => item.contents).flat();
+  list.length = 0;
+  list.push(...flatList);
+};
+const debounceSearch = () => {
+  if (timer.value) clearTimeout(timer.value);
+  timer.value = setTimeout(() => {
+    handleSearch();
+  }, 300);
+};
+
+const handleOverflowElement = (id: string) => {
+  const el = document.getElementById(id);
+  el?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+};
 
 const handleArrowDown = () => {
-  if (!activeKey.value) {
+  if (!activeKey.value && list.length) {
     activeKey.value = list[0].navId;
   } else {
     const index = list.findIndex(item => item.navId === activeKey.value);
-    list[index + 1]?.navId && (activeKey.value = list[index + 1].navId);
+    const id = list[index + 1]?.navId;
+    if (id) {
+      activeKey.value = id;
+      // 溢出元素处理
+      handleOverflowElement(id);
+    }
   }
 };
 
 const handleArrowUp = () => {
   if (!activeKey.value) return;
   const index = list.findIndex(item => item.navId === activeKey.value);
-  list[index - 1]?.navId && (activeKey.value = list[index - 1].navId);
+  const id = list[index - 1]?.navId;
+  if (id) {
+    activeKey.value = id;
+    handleOverflowElement(id);
+  }
 };
 
 const handleMouseEnter = (item: Navigation) => {
   activeKey.value = item.navId;
 };
+const handleItemClick = () => {
+  const item = list.find(el => el.navId === activeKey.value);
+  window.open(item?.siteUrl);
+};
 
 hotkeys.filter = () => true;
 // 监听箭头选择
-hotkeys('up,down,enter', (event: KeyboardEvent, handler) => {
+hotkeys('up,down,enter,esc', (event: KeyboardEvent, handler) => {
+  console.log(handler);
   event.preventDefault();
   if (handler.key === 'down') {
     handleArrowDown();
   } else if (handler.key === 'up') {
     handleArrowUp();
   } else if (handler.key === 'enter' && activeKey.value) {
-    const item = list.find(el => el.navId === activeKey.value);
-    console.log(item);
+    handleItemClick();
+  } else if (handler.key === 'esc') {
+    emit('close');
   }
 });
 
@@ -77,36 +113,50 @@ watch(
   }
 );
 
-onBeforeMount(() => {
-  activeKey.value = '';
-});
+watch(
+  () => props.show,
+  val => {
+    if (!val) {
+      activeKey.value = '';
+      list.length = 0;
+      query.value = '';
+    }
+  }
+);
 </script>
 <template>
   <transition name="search-fade">
     <div v-if="show" class="search-container">
       <div class="search-container__mask" @click="emit('close')"></div>
       <div class="content mobile:!w-lg">
-        <input ref="inputRef" class="item" autocomplete="off" type="text" />
-        <ul :class="{ 'border border-solid border-[var(--search-box-border-color)]': !list.length }">
-          <li
-            v-for="item in list"
-            :key="item.navId"
-            class="item"
-            :class="{ active: item.navId === activeKey }"
-            @mouseenter="handleMouseEnter(item)"
-          >
-            <img :src="item.logoUrl" alt="" />
-            <div ml-8px flex-1 mr-42px overflow-hidden>
-              <p text-14px>{{ item.title }}</p>
-              <p truncate class="text-12px text-[var(--sub-color)]">
-                {{ item.desc }}
-              </p>
-            </div>
-            <shortcut class="shortcut">
-              <icon name="corner-down-left-line" />
-            </shortcut>
-          </li>
-        </ul>
+        <input ref="inputRef" v-model="query" class="item" autocomplete="off" type="text" @keyup="debounceSearch" />
+        <div
+          class="ul-box"
+          :class="{ 'border-0 border-t-1 border-solid border-[var(--search-box-border-color)]': list.length }"
+        >
+          <ul>
+            <li
+              v-for="item in list"
+              :id="item.navId"
+              :key="item.navId"
+              class="item"
+              :class="{ active: item.navId === activeKey }"
+              @mouseenter="handleMouseEnter(item)"
+              @click.enter="handleItemClick"
+            >
+              <img :src="item.logoUrl" alt="" />
+              <div ml-8px flex-1 mr-42px overflow-hidden>
+                <p text-14px>{{ item.title }}</p>
+                <p truncate class="text-12px text-[var(--sub-color)]">
+                  {{ item.desc }}
+                </p>
+              </div>
+              <shortcut class="shortcut">
+                <icon name="corner-down-left-line" />
+              </shortcut>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </transition>
@@ -128,7 +178,6 @@ onBeforeMount(() => {
 
 .content {
   width: calc(100% - 32px);
-  max-height: 60vh;
   margin: auto;
   margin-top: 76px;
   border-radius: 4px;
@@ -136,6 +185,7 @@ onBeforeMount(() => {
   position: relative;
   border: 1px solid var(--search-box-border-color);
   z-index: calc($float-layer-z-index + 1);
+  background-color: rgb(var(--body-bg) / 12%);
   backdrop-filter: blur(2px);
   transform-origin: center top;
   input {
@@ -144,6 +194,14 @@ onBeforeMount(() => {
     outline: 0;
     background-color: transparent;
     color: var(--color);
+  }
+  .ul-box {
+    max-height: 60vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .item {
     height: 60px;

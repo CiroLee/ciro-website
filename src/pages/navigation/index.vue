@@ -17,10 +17,12 @@ const showSearch = ref(false);
 
 const handleOpenSearch = () => {
   showSearch.value = true;
+  document.body.classList.add('overflow-hidden');
 };
 
 const handleCloseSearch = () => {
   showSearch.value = false;
+  document.body.classList.remove('overflow-hidden');
 };
 
 const labelsScrollTo = (dir: 'left' | 'right') => {
@@ -84,9 +86,7 @@ const renderNavList = async () => {
   const filteredList = labels.map(item => ({
     id: item.labelId,
     title: item.label,
-    contents: filterByLabelId(item.labelId, list)
-      .sort((a, b) => (a.tag as string).localeCompare(b.tag as string))
-      .sort((a, b) => a.title.localeCompare(b.title)),
+    contents: filterByLabelId(item.labelId, list).sort((a, b) => a.title.localeCompare(b.title)),
   }));
   navigation.push(...filteredList);
   isLoading.value = false;
@@ -149,7 +149,7 @@ onMounted(() => {
       </div>
     </div>
     <back-top listen-node="window" />
-    <search-container :show="showSearch" @close="handleCloseSearch" />
+    <search-container :show="showSearch" :source="navigation" @close="handleCloseSearch" />
   </div>
 </template>
 <style lang="scss" scoped>
