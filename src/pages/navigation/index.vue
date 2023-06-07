@@ -17,10 +17,12 @@ const showSearch = ref(false);
 
 const handleOpenSearch = () => {
   showSearch.value = true;
+  document.body.classList.add('overflow-hidden');
 };
 
 const handleCloseSearch = () => {
   showSearch.value = false;
+  document.body.classList.remove('overflow-hidden');
 };
 
 const labelsScrollTo = (dir: 'left' | 'right') => {

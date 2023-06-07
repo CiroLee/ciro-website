@@ -3,8 +3,8 @@ import Shortcut from '@/components/Shortcut/index.vue';
 import Icon from '@/components/icon/index.vue';
 import hotkeys from 'hotkeys-js';
 import Fuse from 'fuse.js';
-import type { Navigation, NavigationList } from '@/types/navigation';
 import { uniqueObjArr } from '@/utils/utils';
+import type { Navigation, NavigationList } from '@/types/navigation';
 
 interface SearchContainerProps {
   show: boolean;
@@ -42,40 +42,12 @@ const handleSearch = () => {
   list.length = 0;
   list.push(...uniqueObjArr(flatList, 'navId'));
 };
+
 const debounceSearch = () => {
   if (timer.value) clearTimeout(timer.value);
   timer.value = setTimeout(() => {
     handleSearch();
   }, 300);
-};
-
-const handleOverflowElement = (id: string) => {
-  const el = document.getElementById(id);
-  el?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
-};
-
-const handleArrowDown = () => {
-  if (!activeKey.value && list.length) {
-    activeKey.value = list[0].navId;
-  } else {
-    const index = list.findIndex(item => item.navId === activeKey.value);
-    const id = list[index + 1]?.navId;
-    if (id) {
-      activeKey.value = id;
-      // 溢出元素处理
-      handleOverflowElement(id);
-    }
-  }
-};
-
-const handleArrowUp = () => {
-  if (!activeKey.value) return;
-  const index = list.findIndex(item => item.navId === activeKey.value);
-  const id = list[index - 1]?.navId;
-  if (id) {
-    activeKey.value = id;
-    handleOverflowElement(id);
-  }
 };
 
 const handleMouseEnter = (item: Navigation) => {
@@ -87,19 +59,10 @@ const handleItemClick = () => {
 };
 
 hotkeys.filter = () => true;
-// 监听箭头选择
-hotkeys('up,down,enter,esc', (event: KeyboardEvent, handler) => {
-  console.log(handler);
+// esc 关闭
+hotkeys('esc', (event: KeyboardEvent) => {
   event.preventDefault();
-  if (handler.key === 'down') {
-    handleArrowDown();
-  } else if (handler.key === 'up') {
-    handleArrowUp();
-  } else if (handler.key === 'enter' && activeKey.value) {
-    handleItemClick();
-  } else if (handler.key === 'esc') {
-    emit('close');
-  }
+  emit('close');
 });
 
 watch(
@@ -140,14 +103,14 @@ watch(
               @click.enter="handleItemClick"
             >
               <img :src="item.logoUrl" alt="" />
-              <div ml-8px flex-1 mr-42px overflow-hidden>
+              <div ml-8px flex-1 mr-16px overflow-hidden>
                 <p text-14px>{{ item.title }}</p>
                 <p truncate class="text-12px text-[var(--sub-color)]">
                   {{ item.desc }}
                 </p>
               </div>
               <shortcut class="shortcut">
-                <icon name="corner-down-left-line" />
+                <icon name="arrow-right-line" />
               </shortcut>
             </li>
           </ul>
@@ -209,13 +172,14 @@ watch(
       object-fit: fill;
     }
     .shortcut {
-      display: none;
+      margin: 0;
+      opacity: 0;
     }
     &.active:not(input) {
       background-color: var(--search-box-item-hover-bg);
       cursor: pointer;
       .shortcut {
-        display: block !important;
+        opacity: 1;
       }
     }
   }
@@ -245,7 +209,6 @@ watch(
 }
 
 .search-fade-leave-to .content {
-  // transform: scale(0);
   opacity: 0;
 }
 </style>
