@@ -30,10 +30,10 @@ interface ProjectConfig {
 export const navigationConfig: { inner: NavigationConfig[]; outer: NavigationConfig[] } = {
   inner: [
     {
-      name: '首页',
-      key: 'home',
+      name: 'Me',
+      key: 'me',
       path: '/',
-      icon: 'home-smile-line',
+      icon: 'user-5-line',
     },
     {
       name: '导航',

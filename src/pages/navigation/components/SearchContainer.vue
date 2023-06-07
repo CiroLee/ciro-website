@@ -4,6 +4,7 @@ import Icon from '@/components/Icon/index.vue';
 import hotkeys from 'hotkeys-js';
 import Fuse from 'fuse.js';
 import type { Navigation, NavigationList } from '@/types/navigation';
+import { uniqueObjArr } from '@/utils/utils';
 
 interface SearchContainerProps {
   show: boolean;
@@ -39,7 +40,7 @@ const handleSearch = () => {
 
   const flatList = result.map(item => item.contents).flat();
   list.length = 0;
-  list.push(...flatList);
+  list.push(...uniqueObjArr(flatList, 'navId'));
 };
 const debounceSearch = () => {
   if (timer.value) clearTimeout(timer.value);
@@ -101,22 +102,16 @@ hotkeys('up,down,enter,esc', (event: KeyboardEvent, handler) => {
   }
 });
 
-// watch to auto-focus input
 watch(
   () => props.show,
   (val: boolean) => {
+    // auto focus input
     if (val) {
       nextTick(() => {
         inputRef.value?.focus();
       });
-    }
-  }
-);
-
-watch(
-  () => props.show,
-  val => {
-    if (!val) {
+    } else {
+      // 关闭清空数据
       activeKey.value = '';
       list.length = 0;
       query.value = '';
