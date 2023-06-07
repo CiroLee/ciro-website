@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BentoBox from './BentoBox.vue';
-import Icon from '@/components/Icon/index.vue';
+import Icon from '@/components/icon/index.vue';
 import Loading from '@/components/Loading/index.vue';
 import { useHomeStore } from '@/store/home';
 

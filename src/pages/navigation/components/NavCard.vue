@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Icon from '@/components/Icon/index.vue';
+import Icon from '@/components/icon/index.vue';
 import message from '@/components/Message';
 import { Navigation } from '@/types/navigation';
 import { copyToClipboard } from '@/utils/utils';

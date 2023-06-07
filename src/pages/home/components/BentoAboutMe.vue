@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BentoBox from './BentoBox.vue';
-import Icon from '@/components/Icon/index.vue';
+import Icon from '@/components/icon/index.vue';
 import message from '@/components/Message';
 import { copyToClipboard } from '@/utils/utils';
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Shortcut from '@/components/Shortcut/index.vue';
-import Icon from '@/components/Icon/index.vue';
+import Icon from '@/components/icon/index.vue';
 import hotkeys from 'hotkeys-js';
 import Fuse from 'fuse.js';
 import type { Navigation, NavigationList } from '@/types/navigation';

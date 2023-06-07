@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { themeChange } from '@/utils/theme';
 import { useDark } from '@/hooks';
-import Icon from '@/components/Icon/index.vue';
+import Icon from '@/components/icon/index.vue';
 import { navigationConfig } from '@/config';
 const isDark = useDark('color-theme');
 const toggleColorTheme = () => {

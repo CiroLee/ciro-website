@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ToggleSearch from './components/ToggleSearch.vue';
 import Loading from '@/components/Loading/index.vue';
-import Icon from '@/components/Icon/index.vue';
+import Icon from '@/components/icon/index.vue';
 import NavCard from './components/NavCard.vue';
 import BackTop from '@/components/BackTop/index.vue';
 import SearchContainer from './components/SearchContainer.vue';

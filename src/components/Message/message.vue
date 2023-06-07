@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { MessageOption } from './index';
-import Icon from '@/components/Icon/index.vue';
+import Icon from '@/components/icon/index.vue';
 defineProps<MessageOption>();
 const visible = ref(false);
 const getIcon = (type: string) => {
