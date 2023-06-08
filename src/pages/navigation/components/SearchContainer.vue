@@ -19,7 +19,19 @@ const inputRef = ref<HTMLInputElement>();
 const query = ref('');
 const activeKey = ref('');
 const timer = ref();
+const usingArrowSelect = ref(false);
+const arrowSelectTimer = ref();
 const list = reactive<Navigation[]>([]);
+
+// 解决箭头选择和mouse-enter选择冲突
+const setUsingArrowSelect = () => {
+  if (!list.length) return;
+  arrowSelectTimer.value && clearTimeout(arrowSelectTimer.value);
+  usingArrowSelect.value = true;
+  arrowSelectTimer.value = setTimeout(() => {
+    usingArrowSelect.value = false;
+  }, 300);
+};
 
 // 搜索处理
 const handleSearch = () => {
@@ -51,18 +63,58 @@ const debounceSearch = () => {
 };
 
 const handleMouseEnter = (item: Navigation) => {
+  if (usingArrowSelect.value) return;
   activeKey.value = item.navId;
 };
+// 点击跳转
 const handleItemClick = () => {
   const item = list.find(el => el.navId === activeKey.value);
   window.open(item?.siteUrl);
 };
+// 列表溢出元素
+const handleOverflowElement = (id: string) => {
+  const el = document.getElementById(id);
+  el?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+};
+
+const handleArrowDown = () => {
+  if (!activeKey.value && list.length) {
+    activeKey.value = list[0].navId;
+  } else {
+    const index = list.findIndex(item => item.navId === activeKey.value);
+    const id = list[index + 1]?.navId;
+    if (id) {
+      activeKey.value = id;
+      // 溢出元素处理
+      handleOverflowElement(id);
+    }
+  }
+};
+const handleArrowUp = () => {
+  if (!activeKey.value) return;
+  const index = list.findIndex(item => item.navId === activeKey.value);
+  const id = list[index - 1]?.navId;
+  if (id) {
+    activeKey.value = id;
+    handleOverflowElement(id);
+  }
+};
 
 hotkeys.filter = () => true;
-// esc 关闭
-hotkeys('esc', (event: KeyboardEvent) => {
+// 热键绑定
+hotkeys('up,down,enter,esc', (event: KeyboardEvent, handler) => {
   event.preventDefault();
-  emit('close');
+  if (handler.key === 'down') {
+    setUsingArrowSelect();
+    handleArrowDown();
+  } else if (handler.key === 'up') {
+    setUsingArrowSelect();
+    handleArrowUp();
+  } else if (handler.key === 'enter' && activeKey.value) {
+    handleItemClick();
+  } else if (handler.key === 'esc') {
+    emit('close');
+  }
 });
 
 watch(
@@ -78,6 +130,7 @@ watch(
       activeKey.value = '';
       list.length = 0;
       query.value = '';
+      usingArrowSelect.value = false;
     }
   }
 );
@@ -110,7 +163,7 @@ watch(
                 </p>
               </div>
               <shortcut class="shortcut">
-                <icon name="arrow-right-line" />
+                <icon name="corner-down-left-line" />
               </shortcut>
             </li>
           </ul>
@@ -143,15 +196,17 @@ watch(
   position: relative;
   border: 1px solid var(--search-box-border-color);
   z-index: calc($float-layer-z-index + 1);
-  background-color: rgb(var(--body-bg) / 12%);
+  background-color: rgb(var(--body-bg) / 40%);
   backdrop-filter: blur(2px);
   transform-origin: center top;
   input {
+    height: 52px !important;
     width: 100%;
     border: 0;
     outline: 0;
     background-color: transparent;
     color: var(--color);
+    font-size: 16px;
   }
   .ul-box {
     max-height: 60vh;
@@ -162,7 +217,7 @@ watch(
     }
   }
   .item {
-    height: 60px;
+    height: 58px;
     padding: 0 14px;
     display: flex;
     align-items: center;
