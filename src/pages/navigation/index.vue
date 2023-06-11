@@ -113,13 +113,13 @@ onMounted(() => {
       <toggle-search
         v-if="!showSearch"
         mx-auto
-        class="mobile:max-w-md"
+        class="sm:max-w-md"
         @click="handleOpenSearch"
         @open-search="handleOpenSearch"
       />
       <div class="labels-wrapper">
         <div class="label-arrow left" @click="labelsScrollTo('left')">
-          <icon name="arrow-left-s-line mt-1px" />
+          <icon name="arrow-left-s-line mt-1px" size="20px" />
         </div>
         <div ref="labelsRef" class="labels no-scrollbar">
           <div v-for="label in labels" :key="label.labelId" class="label-item" @click="jumpTo(label.labelId)">
@@ -127,7 +127,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="label-arrow right" @click="labelsScrollTo('right')">
-          <icon name="arrow-right-s-line mt-1px ml-auto" />
+          <icon name="arrow-right-s-line mt-1px ml-auto" size="20px" />
         </div>
       </div>
     </div>
@@ -143,7 +143,7 @@ onMounted(() => {
             :site-url="card.siteUrl"
             :title="card.title"
             :tag="card.tag"
-            class="lt-mobile:!w-full mb-12px mr-10px"
+            class="lt-sm:!w-full mb-12px mr-10px"
           />
         </div>
       </div>
@@ -220,7 +220,7 @@ onMounted(() => {
   }
 }
 
-@screen lt-mobile {
+@screen lt-sm {
   .navigation {
     padding: 0 16px;
   }

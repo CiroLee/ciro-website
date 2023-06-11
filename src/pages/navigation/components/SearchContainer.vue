@@ -139,7 +139,7 @@ watch(
   <transition name="search-fade">
     <div v-if="show" class="search-container">
       <div class="search-container__mask" @click="emit('close')"></div>
-      <div class="content mobile:!w-lg">
+      <div class="content sm:!w-lg">
         <input ref="inputRef" v-model="query" class="item" autocomplete="off" type="text" @keyup="debounceSearch" />
         <div
           class="ul-box"

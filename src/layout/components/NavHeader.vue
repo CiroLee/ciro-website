@@ -19,15 +19,23 @@ const toggleColorTheme = () => {
       active-class="nav__item--active"
       class="nav__item"
       :to="nav.path"
+      :title="nav.name"
     >
       <icon v-if="nav.icon" :name="nav.icon" />
       <span>{{ nav.name }}</span>
     </router-link>
-    <a v-for="nav in navigationConfig.outer" :key="nav.key" class="nav__item" :href="nav.path" target="_blank">
+    <a
+      v-for="nav in navigationConfig.outer"
+      :key="nav.key"
+      class="nav__item"
+      :href="nav.path"
+      target="_blank"
+      :title="nav.name"
+    >
       <icon v-if="nav.icon" :name="nav.icon" />
       <span>{{ nav.name }}</span>
     </a>
-    <div class="nav__item theme" @click="toggleColorTheme">
+    <div class="nav__item theme" title="theme" @click="toggleColorTheme">
       <icon :name="isDark ? 'moon-line' : 'sun-line'" />
     </div>
   </nav>
@@ -55,6 +63,16 @@ nav {
   @apply flex-center;
   & .cw-icon {
     margin-right: 2px;
+  }
+}
+
+@screen lt-mobile {
+  .nav__item .cw-icon {
+    font-size: 20px;
+    margin-right: 0;
+    & + span {
+      display: none;
+    }
   }
 }
 </style>

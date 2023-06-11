@@ -43,7 +43,7 @@ import { myProjects } from '@/config';
   }
 }
 
-@screen lt-mobile {
+@screen lt-sm {
   .project-item {
     margin: 0;
     width: 100%;

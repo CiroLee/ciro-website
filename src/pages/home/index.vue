@@ -38,7 +38,7 @@ import BentoContributions from './components/BentoContributions.vue';
   min-width: 600px;
 }
 
-@screen lt-mobile {
+@screen lt-sm {
   .home {
     max-width: 100%;
     overflow: hidden;
@@ -58,7 +58,7 @@ import BentoContributions from './components/BentoContributions.vue';
   }
 }
 
-@screen at-mobile {
+@screen at-sm {
   .home {
     max-width: 84vw;
   }

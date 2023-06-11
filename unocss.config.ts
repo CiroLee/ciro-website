@@ -6,7 +6,8 @@ export default defineConfig({
   presets: [presetUno(), presetAttributify()],
   theme: {
     breakpoints: {
-      mobile: '720px',
+      mobile: '480px',
+      sm: '720px',
       md: '840px',
       lg: '980px',
     },
