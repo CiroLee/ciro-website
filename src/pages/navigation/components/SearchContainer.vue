@@ -38,15 +38,17 @@ const handleSearch = () => {
   const fuse = new Fuse(props.source, {
     keys: ['contents.title', 'contents.tag'],
   });
-
+  const lowerQuery = query.value.toLowerCase();
   const result = fuse
-    .search(query.value)
+    .search(lowerQuery)
     .sort((prev, next) => prev.refIndex - next.refIndex)
     .map(doc => ({
       ...doc.item,
-      contents: doc.item.title.includes(query.value)
+      contents: doc.item.title.includes(lowerQuery)
         ? doc.item.contents
-        : doc.item.contents.filter(c => c.title.includes(query.value) || c.tag?.includes(query.value)),
+        : doc.item.contents.filter(
+            c => c.title.toLowerCase().includes(lowerQuery) || c.tag?.toLowerCase().includes(lowerQuery)
+          ),
     }))
     .filter(item => item.contents.length);
 
