@@ -111,9 +111,9 @@ onMounted(() => {
     <loading v-if="isLoading" global />
     <div fixed left-0 w-full class="nav-search">
       <toggle-search
-        v-if="!showSearch"
         mx-auto
-        class="sm:max-w-md"
+        class="sm:max-w-md transition-opacity"
+        :class="{ 'opacity-0': showSearch }"
         @click="handleOpenSearch"
         @open-search="handleOpenSearch"
       />
