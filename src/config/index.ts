@@ -41,6 +41,12 @@ export const navigationConfig: { inner: NavigationConfig[]; outer: NavigationCon
       path: '/navigation',
       icon: 'compass-3-line',
     },
+    {
+      name: 'Sponsor',
+      key: 'sponsor',
+      path: '/sponsor',
+      icon: 'heart-3-line',
+    },
   ],
   outer: [
     {
