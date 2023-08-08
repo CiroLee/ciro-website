@@ -4,7 +4,8 @@
 </template>
 <style lang="scss">
 .cw-shortcut {
-  width: 20px;
+  min-width: 20px;
+  padding: 0 4px;
   height: 20px;
   border-radius: 2px;
   background-color: var(--shortcut-bg);
