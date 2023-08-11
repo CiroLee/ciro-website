@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import Shortcut from '@/components/Shortcut/index.vue';
 import hotkeys from 'hotkeys-js';
-import { isMac } from '@/utils/utils';
+import { isMobile, isWindows } from '@/utils/utils';
 
 const emits = defineEmits(['openSearch']);
 
 // 热键绑定 macos 只允许command + K
 hotkeys('ctrl+k,command+k', event => {
   event.preventDefault();
-  if (isMac() && event.metaKey) {
+  if (!isWindows() && event.metaKey) {
     emits('openSearch');
-  } else if (!isMac() && event.ctrlKey) {
+  } else if (isWindows() && event.ctrlKey) {
     emits('openSearch');
   }
 });
@@ -18,8 +18,8 @@ hotkeys('ctrl+k,command+k', event => {
 <template>
   <div class="toggle-search">
     <span class="text-[var(--placeholder-color)]">Searching...</span>
-    <div>
-      <shortcut>{{ isMac() ? '⌘' : 'Ctrl' }}</shortcut>
+    <div v-if="!isMobile()">
+      <shortcut>{{ isWindows() ? 'Ctrl' : '⌘' }}</shortcut>
       <shortcut>K</shortcut>
     </div>
   </div>
