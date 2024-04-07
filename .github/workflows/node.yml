@@ -10,13 +10,10 @@ jobs:
    steps:
     - name: Checkout repo
       uses: actions/checkout@v2 
-    - uses: pnpm/action-setup@v2.2.2
-      with:
-        version: 7.1.3
     - name: install
-      run: pnpm install
+      run: npm install
     - name: build
-      run: pnpm run build
+      run: npm run build
     - name: deploy
       uses: easingthemes/ssh-deploy@main
       env:
