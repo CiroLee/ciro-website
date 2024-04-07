@@ -10,6 +10,7 @@ export default defineConfig({
       sm: '720px',
       md: '840px',
       lg: '980px',
+      xlg: '1440px',
     },
   },
   rules: [

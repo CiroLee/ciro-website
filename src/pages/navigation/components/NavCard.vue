@@ -38,7 +38,6 @@ const copyLink = (url?: string) => {
 </template>
 <style lang="scss" scoped>
 .nav-card {
-  width: 240px;
   height: 136px;
   border-radius: 4px;
   padding: 12px;

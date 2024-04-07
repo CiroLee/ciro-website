@@ -117,7 +117,7 @@ onMounted(() => {
         @click="handleOpenSearch"
         @open-search="handleOpenSearch"
       />
-      <div class="labels-wrapper">
+      <div class="labels-wrapper max-w-[62%]">
         <div class="label-arrow left" @click="labelsScrollTo('left')">
           <icon name="arrow-left-s-line mt-1px" size="20px" />
         </div>
@@ -133,8 +133,10 @@ onMounted(() => {
     </div>
     <div class="navigation__pane">
       <div v-for="nav in navigation" :id="nav.id" :key="nav.id" py-16px>
-        <h4 mb-3>{{ nav.title }}</h4>
-        <div>
+        <h4 class="mb-3 lg:max-w-[80%] xlg:max-w-[76%] mx-auto">{{ nav.title }}</h4>
+        <div
+          class="lg:max-w-[80%] xlg:max-w-[76%] mx-auto grid grid-cols-1 gap-3 mobile:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xlg:grid-cols-5"
+        >
           <nav-card
             v-for="card in nav.contents"
             :key="card.navId"
@@ -143,7 +145,6 @@ onMounted(() => {
             :site-url="card.siteUrl"
             :title="card.title"
             :tag="card.tag"
-            class="lt-sm:!w-full mb-12px mr-10px"
           />
         </div>
       </div>
@@ -170,15 +171,13 @@ onMounted(() => {
 }
 
 .labels-wrapper {
-  max-width: 80%;
-  margin-left: 8%;
+  margin: 0 auto;
   margin-top: 24px;
   position: relative;
 }
 
 .labels {
-  overflow-y: hidden;
-  overflow-x: auto;
+  overflow: auto hidden;
   white-space: nowrap;
   position: relative;
   padding: 0 18px;

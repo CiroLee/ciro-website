@@ -24,6 +24,7 @@ import BentoContributions from './components/BentoContributions.vue';
 </template>
 <style lang="scss" scoped>
 .home {
+  max-width: 64%;
   margin: auto;
   margin-top: calc($content-to-header + 24px);
 }

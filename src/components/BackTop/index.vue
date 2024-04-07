@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import Icon from '@/components/icon/index.vue';
 import { useEventListener } from '@/hooks';
-import { debounce } from 'fe-gear';
+import { debounce } from 'utils-gear';
 
 interface BackTopProps {
   listenNode: string | HTMLElement;
@@ -70,7 +70,9 @@ onMounted(() => {
   display: flex;
   @apply flex-center;
 
-  transition: border, color $animate-duration ease;
+  transition:
+    border,
+    color $animate-duration ease;
   &:hover {
     color: var(--back-top-hover-color);
     border-color: var(--back-top-hover-color);

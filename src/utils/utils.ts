@@ -1,4 +1,4 @@
-import { getPlatformType } from 'fe-gear';
+import { getPlatformType } from 'utils-gear';
 export const copyToClipboard = (text: string) => {
   return navigator.clipboard.writeText(text);
 };

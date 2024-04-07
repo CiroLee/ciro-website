@@ -27,7 +27,7 @@ const handleCopy = (text: string) => {
           <icon name="bilibili-line" size="22px" />
         </a>
         <a href="https://twitter.com/duduclouds" target="_blank" class="icon-box hover:text-blue">
-          <icon name="twitter-line" size="22px" />
+          <icon name="twitter-x-line" size="22px" />
         </a>
         <div class="icon-box hover:text-#22c822" @click="handleCopy('rain_rainbowAce')">
           <icon name="wechat-2-line" size="22px" />
